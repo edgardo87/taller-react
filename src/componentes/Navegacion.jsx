@@ -5,7 +5,7 @@ import Pokemon from "./Pokemon";
 
 function Navegacion() {
 
-    const [pagina, setPagina]  = useState(0);
+    const [pagina, setPagina]  = useState(1);
     const [buscar, setBuscar]  = useState(false);
     const [personajes, setPersonajes] = useState([]);
 
@@ -14,7 +14,7 @@ function Navegacion() {
         async function request() {
             //Peticion
             //const res = await axios.get(`https://rickandmortyapi.com/api/character/?page=${pagina}`);
-            const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${20*pagina}`);
+            const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${20*(pagina-1)}`);
             console.log(res.data.results);
             setPersonajes(res.data.results);
         }
