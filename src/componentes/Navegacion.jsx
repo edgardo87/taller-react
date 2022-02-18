@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Personaje from "./Personaje";
+//import Personaje from "./Personaje";
 import Pokemon from "./Pokemon";
 
 function Navegacion() {
