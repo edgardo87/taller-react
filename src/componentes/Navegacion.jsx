@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Personaje from "./Personaje";
+import Pokemon from "./Pokemon";
 
 function Navegacion() {
 
-    const [pagina, setPagina]  = useState(1);
+    const [pagina, setPagina]  = useState(0);
     const [buscar, setBuscar]  = useState(false);
     const [personajes, setPersonajes] = useState([]);
 
@@ -12,7 +13,8 @@ function Navegacion() {
 
         async function request() {
             //Peticion
-            const res = await axios.get(`https://rickandmortyapi.com/api/character/?page=${pagina}`);
+            //const res = await axios.get(`https://rickandmortyapi.com/api/character/?page=${pagina}`);
+            const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${20*pagina}`);
             console.log(res.data.results);
             setPersonajes(res.data.results);
         }
@@ -35,12 +37,17 @@ function Navegacion() {
             {   
             personajes.length > 0 ? 
             personajes.map((personaje, index) => (
-                <Personaje 
-                    key={`personaje${index+1}`} 
+                <Pokemon 
+                    key={personaje.id} 
                     name = {personaje.name} 
-                    genero = {personaje.gender}
-                    foto = {personaje.image}
+                    url = {personaje.url}
                 />
+                //<Personaje 
+                //    key={`personaje${index+1}`} 
+                //    name = {personaje.name} 
+                //    genero = {personaje.gender}
+                //    foto = {personaje.image}
+                ///>
             )) :
             <p>Cargando...</p>
             }
