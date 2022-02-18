@@ -32,6 +32,7 @@ function Navegacion() {
     
     return (
         <div>
+            <b>Página </b>
             <input type="text" onChange={handleChange}/>
             <button onClick={handleClick}>Buscar</button>
             {   
