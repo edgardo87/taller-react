@@ -1,5 +1,5 @@
 import './App.css';
-import Navegacion from './componentes/Navegacion.jsx';
+import Navegacion from './componentes/Navegacion';
 
 function App() {
   return (
